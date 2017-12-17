@@ -1,10 +1,12 @@
 import template from './auth.component.html';
+import controller from './auth.controller.js';
 import './auth.component.scss';
-import AuthController from './auth.controller.js';
 
-const AuthComponent = {
+let authComponent = {
+  restrict: 'E',
+  bindings: {},
   template,
-  controller: AuthController
+  controller,
+  controllerAs: 'authController'
 };
-
-angular.module('app.components').component('authComponent', AuthComponent);
+export default authComponent;

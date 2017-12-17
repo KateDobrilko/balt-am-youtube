@@ -1,14 +1,7 @@
-function AuthController() {
-    var ctrl = this;
+class authController {
+    constructor() {
+      this.name = 'auth';
+    }
+  }
 
-    ctrl.delete = function() {
-        ctrl.onDelete({hero: ctrl.hero});
-    };
-
-    ctrl.update = function(prop, value) {
-        ctrl.onUpdate({hero: ctrl.hero, prop: prop, value: value});
-    };
-}
-
-export default AuthController;
-
+  export default authController;

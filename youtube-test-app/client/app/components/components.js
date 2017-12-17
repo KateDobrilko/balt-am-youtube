@@ -1,5 +1,1 @@
-import angular from 'angular';
-
-const ComponentsModule = angular.module('app.components', [
-]);
-export default ComponentsModule;
+import angular from 'angular';import SearchVideoModule from './searchVideo/searchVideo.module';import VideoPlayerModule from './videoPlayer/videoPlayer.module';import WatchHistoryModule from './watchHistory/watchHistory.module';import AuthModule from './auth/auth.module';const ComponentsModule = angular.module('app.components', [    SearchVideoModule.name,    VideoPlayerModule.name,    WatchHistoryModule.name,    AuthModule.name]);export default ComponentsModule;
