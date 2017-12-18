@@ -1,4 +1,4 @@
-import template from './searchVideo.component.html';
+import  template from './searchVideo.component.html';
 import controller from './searchVideo.controller.js';
 import './searchVideo.component.scss';
 

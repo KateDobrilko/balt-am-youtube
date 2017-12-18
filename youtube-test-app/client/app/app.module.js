@@ -13,7 +13,7 @@ let myApp = angular.module('app', [
 
 myApp.config([
     '$uiRouterProvider', $uiRouter => {
-        $uiRouter.trace.enable(1);
+       $uiRouter.trace.enable(1);
         const $urlService = $uiRouter.urlService;
         $urlService.rules.otherwise({ state: 'auth' });
 

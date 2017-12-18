@@ -1,21 +1,14 @@
-import appComponent from "./app.component";
-import authComponent from "./components/auth/auth.component";
-import searchVideoComponent from "./components/searchVideo/searchVideo.component";
-import watchHistoryComponent from "./components/watchHistory/watchHistory.component";
-import videoPlayerComponent from "./components/videoPlayer/videoPlayer.component";
-
-
 export const appState = {
     name: 'app',
     redirectTo: 'auth',
-    component: appComponent
+    component: 'app'
 };
 
 export const authState = {
     parent: 'app',
     name: 'auth',
     url: '/auth',
-    component: authComponent,
+    component: 'auth',
     resolve: { returnTo: returnTo }
 };
 
@@ -23,21 +16,21 @@ export const videoPlayerState = {
     parent: 'app',
     name: 'videoPlayer',
     url: '/video_player',
-    component: videoPlayerComponent
+    component: 'videoPlayer'
 };
 
 export const searchVideoState = {
     parent: 'app',
     name: 'searchVideo',
     url: '/search_video',
-    component: searchVideoComponent
+    component: 'searchVideo'
 };
 
 export const watchHistoryState = {
     parent: 'app',
     name: 'watchHistory',
     url: '/watch_history',
-    component: watchHistoryComponent
+    component: 'watchHistory'
 
 };
 
