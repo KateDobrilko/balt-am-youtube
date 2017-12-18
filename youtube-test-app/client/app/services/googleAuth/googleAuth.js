@@ -6,7 +6,7 @@ class googleAuthService {
         this.GoogleAuth = null;
     }
 
-    initGApiClient() {
+    /*initGApiClient() {
         let $script = require("scriptjs");
         $script("https://apis.google.com/js/api.js", function () {
             this.gapi.client.init({
@@ -21,7 +21,7 @@ class googleAuthService {
                 this.GoogleAuth.isSignedIn.listen(updateSigninStatus);
             });
         });
-    }
+    }*/
 }
 
 export default googleAuthService;
