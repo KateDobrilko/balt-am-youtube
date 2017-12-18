@@ -6,7 +6,6 @@ let searchVideoComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller,
-  controllerAs: 'searchVideoController'
+  controller
 };
 export default searchVideoComponent;

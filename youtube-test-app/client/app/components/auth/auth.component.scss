@@ -1,0 +1,36 @@
+.auth-container {
+  display: flex;
+  align-content: flex-start;
+  justify-content: center;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 40vh;
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    &.button--google-auth {
+      background-color: #df4a32;
+      border-radius: 3px;
+      padding: 20px;
+      font-size: 22px;
+      &:hover{
+        background-color: rgba(#df4a32, 0.8);
+      }
+      .fa {
+        &.fa-google {
+          color: white;
+          font-size: 30px;
+          padding-right: 10px;
+          border-right: 2px solid rgba(white, 0.2);
+        }
+      }
+      p {
+        margin: 0 0 0 10px;
+        font-family: 'Lato', sans-serif;
+      }
+    }
+  }
+}

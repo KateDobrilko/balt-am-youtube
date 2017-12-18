@@ -1,7 +1,11 @@
 class authController {
-    constructor() {
+    constructor(googleAuthService) {
       this.name = 'auth';
+      this.localizedAuthButtonText = "Sign in with Google";
+      this.$onInit = function(){
+          googleAuthService.initGApiClient();
+      }
     }
   }
-
-  export default authController;
+authController.$inject = ['googleAuthService'];
+export default authController;

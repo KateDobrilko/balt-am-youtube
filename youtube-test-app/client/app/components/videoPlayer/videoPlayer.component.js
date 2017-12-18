@@ -6,7 +6,6 @@ let videoPlayerComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller,
-  controllerAs: 'videoPlayerController'
+  controller
 };
 export default videoPlayerComponent;

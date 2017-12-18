@@ -6,7 +6,6 @@ let watchHistoryComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller,
-  controllerAs: 'watchHistoryController'
+  controller
 };
 export default watchHistoryComponent;

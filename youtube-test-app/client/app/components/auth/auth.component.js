@@ -6,7 +6,6 @@ let authComponent = {
   restrict: 'E',
   bindings: {},
   template,
-  controller,
-  controllerAs: 'authController'
+  controller
 };
 export default authComponent;

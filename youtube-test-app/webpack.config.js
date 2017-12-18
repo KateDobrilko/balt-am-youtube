@@ -45,8 +45,7 @@ if (isDev) {
         plugins: [
 
             new webpack.ProvidePlugin({
-                'window.Masonry': 'Masonry',
-                'gapi': 'a'
+                'window.Masonry': 'Masonry'
             }),
 
             // HtmlWebpackPlugin: Simplifies creation of HTML files to serve your webpack bundles : https://www.npmjs.com/package/html-webpack-plugin
@@ -101,7 +100,7 @@ if (isDev) {
             }),
 
             new webpack.ProvidePlugin({
-                'window.Masonry': 'Masonry'
+                'window.Masonry': 'Masonry',
             }),
 
             new webpack.optimize.CommonsChunkPlugin('common.js'),

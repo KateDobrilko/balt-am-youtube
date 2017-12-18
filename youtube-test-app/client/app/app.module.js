@@ -3,12 +3,14 @@ import 'normalize.css';
 import angular from 'angular';
 import appComponent from './app.component';
 import ComponentsModule from './components/components';
+import ServicesModule from './services/services';
 import {appState, authState, watchHistoryState, searchVideoState, videoPlayerState} from "./app.states";
 import uiRouter from '@uirouter/angularjs';
 
 let myApp = angular.module('app', [
     uiRouter,
-    ComponentsModule.name
+    ComponentsModule.name,
+    ServicesModule.name
 ]);
 
 myApp.config([
