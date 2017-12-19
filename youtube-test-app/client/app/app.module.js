@@ -7,6 +7,7 @@ import ServicesModule from './services/services';
 import {appState, authState, watchHistoryState, searchVideoState, videoPlayerState} from "./app.states";
 import uiRouter from '@uirouter/angularjs';
 
+
 let myApp = angular.module('app', [
     uiRouter,
     ComponentsModule.name,
@@ -18,7 +19,6 @@ myApp.config([
        $uiRouter.trace.enable(1);
         const $urlService = $uiRouter.urlService;
         $urlService.rules.otherwise({ state: 'auth' });
-
         const $stateRegistry = $uiRouter.stateRegistry;
         $stateRegistry.register(appState);
         $stateRegistry.register(authState);
@@ -29,3 +29,5 @@ myApp.config([
 ]);
 
 myApp.component('app', appComponent);
+
+
