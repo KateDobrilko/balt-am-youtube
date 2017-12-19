@@ -7,18 +7,21 @@ class authController {
         this.returnToOriginalState = () => {
             let state = this.returnTo.state();
             let params = this.returnTo.params();
-            let options = Object.assign({}, this.returnTo.options(), { reload: true });
+            let options = Object.assign({}, this.returnTo.options(), {reload: true});
             this.$state.go(state, params, options);
         };
     }
 
-   $onInit() {
+    $onInit() {
         this.googleAuthService.initGApiClient();
     };
 
     handleGoogleSignInClick() {
-        this.googleAuthService.signIn().then(this.returnToOriginalState)
-            .finally(() => this.googleAuthService.isAuthenticated = false);
+        this.googleAuthService.signIn().then(()=> {
+            this.googleAuthService.isAuthenticated = true;
+            this.returnToOriginalState();
+        });
+
     };
 
 }
