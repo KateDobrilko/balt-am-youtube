@@ -4,7 +4,7 @@ import './auth.component.scss';
 
 let authComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: { returnTo: '<' },
   template,
   controller
 };

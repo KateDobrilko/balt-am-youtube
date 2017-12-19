@@ -16,22 +16,24 @@ export const videoPlayerState = {
     parent: 'app',
     name: 'videoPlayer',
     url: '/video_player',
-    component: 'videoPlayer'
+    component: 'videoPlayer',
+    data: { requiresAuth: true }
 };
 
 export const searchVideoState = {
     parent: 'app',
     name: 'searchVideo',
     url: '/search_video',
-    component: 'searchVideo'
+    component: 'searchVideo',
+    data: { requiresAuth: true }
 };
 
 export const watchHistoryState = {
     parent: 'app',
     name: 'watchHistory',
     url: '/watch_history',
-    component: 'watchHistory'
-
+    component: 'watchHistory',
+    data: { requiresAuth: true }
 };
 
 
