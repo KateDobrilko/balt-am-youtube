@@ -22,6 +22,10 @@ class googleAuthService {
         return Promise.resolve(this.GoogleAuth.signIn());
     }
 
+    signOut(){
+        return Promise.resolve(this.GoogleAuth.signOut());
+    }
+
     initGApiClient() {
         var $script = require("scriptjs");
         $script(["//apis.google.com/js/api.js"], 'gapiClient');

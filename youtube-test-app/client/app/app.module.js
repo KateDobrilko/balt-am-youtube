@@ -6,7 +6,7 @@ import ComponentsModule from './components/components';
 import ServicesModule from './services/services';
 import {appState, authState, watchHistoryState, searchVideoState, videoPlayerState} from "./app.states";
 import uiRouter from '@uirouter/angularjs';
-import authHookRunBlock from './requires-auth.hook';
+import authHookRunBlock from './requiresAuth.hook';
 
 
 let myApp = angular.module('app', [

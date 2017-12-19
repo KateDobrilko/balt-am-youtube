@@ -1,0 +1,31 @@
+
+.search-video-container {
+  display: flex;
+  align-content: flex-start;
+  justify-content: center;
+  margin-top: 40vh;
+  margin-left: 20vw;
+  margin-right: 20vw;
+
+  input[type="text"] {
+    width: 70%;
+    padding: 20px;
+    background: #272727;
+    border: 0;
+    float: left;
+    font-size: 20px;
+    color: #989898;
+    font-family: 'Lato', sans-serif;
+  }
+  button {
+    padding: 20px;
+    width: 110px;
+    float: left;
+    background: #df4a32;
+    border: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}
