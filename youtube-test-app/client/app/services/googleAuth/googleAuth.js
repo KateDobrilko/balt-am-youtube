@@ -5,7 +5,34 @@ import * as ApiKeyHolder from './../../../gapi_key.json';
 class googleAuthService {
     constructor() {
         'ngInject';
-        this.GoogleAuth = null;
+        this._GoogleAuth = null;
+        this.updateSigninStatus = () => {
+            this.signInStatus =  !this.signInStatus;
+        };
+        this._signInStatus = false;
+
+
+
+
+    }
+    get GoogleAuth(){
+        return this._GoogleAuth;
+    }
+
+    set GoogleAuth(value){
+        this._GoogleAuth = value;
+    }
+
+    get signInStatus(){
+        return this._signInStatus;
+    }
+
+    set signInStatus(value){
+        this._signInStatus = value;
+    }
+
+    signIn(){
+        this.GoogleAuth.signIn();
     }
 
     initGApiClient() {
@@ -14,6 +41,7 @@ class googleAuthService {
         $script.ready('gapiClient', () => {
 
                 gapi.load('client:auth2', initClient);
+                let that = this;
                 function initClient() {
                     gapi.client.init({
                         'apiKey': ApiKeyHolder['api-key'],
@@ -21,15 +49,18 @@ class googleAuthService {
                         'scope': 'https://www.googleapis.com/auth/youtube.force-ssl',
                         'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest']
                     }).then(function () {
-                        this.GoogleAuth = gapi.auth2.getAuthInstance();
+                        that.GoogleAuth = gapi.auth2.getAuthInstance();
 
                         // Listen for sign-in state changes.
-                        /*this.GoogleAuth.isSignedIn.listen(updateSigninStatus);*/
+                        that.GoogleAuth.isSignedIn.listen(that.updateSigninStatus);
                     });
                 }
             }
         );
+
     }
+
+
 }
 
 export default googleAuthService;
