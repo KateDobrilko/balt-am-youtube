@@ -4,7 +4,9 @@ import './youtubeVideo.component.scss';
 
 let youtubeVideoComponent = {
     restrict: 'E',
-    bindings: {},
+    bindings: {
+        video: '<'
+    },
     template,
     controller
 };

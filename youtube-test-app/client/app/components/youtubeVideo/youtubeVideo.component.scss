@@ -1,0 +1,36 @@
+.video-container {
+  width: 100%;
+  a {
+    display: block;
+    overflow: auto;
+    padding: 30px;
+    background: transparent;
+    span.video-title {
+      text-decoration: none;
+      font-size: 18px;
+      margin-top: 10px;
+      color: #6f6f6f;
+      display: block;
+      font-family: 'Lato', sans-serif;
+
+    }
+    &:hover {
+      text-decoration: none;
+      span.video-title {
+        text-decoration: none;
+      }
+    }
+  }
+  a.clickable {
+    background: rgba(53, 53, 53, 0.12);
+    &:hover {
+      background: rgba(65, 65, 65, 0.15);
+      cursor: pointer;
+      span.video-title {
+        color: #acacac;
+
+      }
+    }
+  }
+
+}

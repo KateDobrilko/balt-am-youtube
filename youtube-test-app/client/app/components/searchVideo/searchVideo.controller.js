@@ -1,12 +1,18 @@
 class searchVideoController {
-    constructor($http, youtubeApiService) {
+    constructor($http, youtubeApiService, $scope) {
         this.name = 'searchVideo';
         this.youtubeApiService = youtubeApiService;
+        this.videos = [];
+        let $ctrl = this;
         this.sendSearchRequest = () => {
-            this.youtubeApiService.searchVideo(this.searchQuery);
+            function searchQuerySuccess(response){
+                $ctrl.videos = response.items;
+                $scope.$apply();
+            }
+            this.youtubeApiService.searchVideo(this.searchQuery, searchQuerySuccess);
         };
         this.searchQuery = '';
     }
 }
-searchVideoController.$inject = ['$http','youtubeApiService'];
+searchVideoController.$inject = ['$http','youtubeApiService', '$scope'];
 export default searchVideoController;

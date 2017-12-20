@@ -1,13 +1,14 @@
 .search-video-container {
   display: flex;
   align-content: flex-start;
-  justify-content: center;
-  margin-top: 40vh;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 10vh;
   margin-left: 20vw;
   margin-right: 20vw;
 
   input[type="text"] {
-    width: 70%;
+    width: 80%;
     padding: 20px;
     background: #272727;
     border: 0;
@@ -15,10 +16,12 @@
     font-size: 20px;
     color: #989898;
     font-family: 'Lato', sans-serif;
+    height: 70px;
   }
   button {
     padding: 20px;
-    width: 110px;
+    width: 20%;
+    min-width: 60px;
     float: left;
     background: #df4a32;
     border: 0;
@@ -26,5 +29,9 @@
     color: #fff;
     cursor: pointer;
     font-size: 20px;
+    height: 70px;
+  }
+  .videos-container {
+    width: 100%;
   }
 }

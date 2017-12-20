@@ -8,4 +8,5 @@ let searchVideoComponent = {
   template,
   controller
 };
+
 export default searchVideoComponent;

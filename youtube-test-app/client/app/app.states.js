@@ -15,7 +15,7 @@ export const authState = {
 export const videoPlayerState = {
     parent: 'app',
     name: 'videoPlayer',
-    url: '/video_player',
+    url: '/video_player/{id}',
     component: 'videoPlayer',
     data: { requiresAuth: true }
 };

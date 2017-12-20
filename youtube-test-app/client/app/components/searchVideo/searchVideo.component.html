@@ -1,4 +1,7 @@
 <div class="search-video-container">
     <input type="text" data-ng-model="$ctrl.searchQuery"/>
     <button data-ng-click="$ctrl.sendSearchRequest()"><i class="fa fa-search"></i></button>
+    <div class="videos-container">
+        <youtube-video video="video" data-ng-repeat="video in $ctrl.videos"></youtube-video>
+    </div>
 </div>
