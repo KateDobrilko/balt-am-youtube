@@ -43,7 +43,7 @@ class youtubeApiService {
     getPlaylistId(afterCallback) {
         if (this.playlistId) {
             afterCallback(this.playlistId);
-            return
+            return;
         }
 
         let request = this.googleAuthService.gapi.client.youtube.playlists.list({
@@ -61,7 +61,7 @@ class youtubeApiService {
             });
             if (that.playlistId) {
                 afterCallback(that.playlistId);
-                return
+                return;
             }
             else {
                 that.initPlaylist(afterCallback);
