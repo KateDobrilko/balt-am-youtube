@@ -20,25 +20,7 @@ class youtubeApiService {
 
     }
 
-    initPlaylist(afterCallback) {
-        let request = this.googleAuthService.gapi.client.youtube.playlists.insert({
-            part: 'snippet,status',
-            resource: {
-                snippet: {
-                    title: 'Watch history',
-                    description: 'Watch history playlist'
-                },
-                status: {
-                    privacyStatus: 'private'
-                }
-            }
-        });
-        let that = this;
-        request.execute(function (response) {
-            that.playlistId = response.id;
-            afterCallback(that.playlistId);
-        });
-    }
+
 
     getPlaylistId(afterCallback) {
         if (this.playlistId) {
@@ -99,6 +81,27 @@ class youtubeApiService {
             request.execute();
         });
 
+    }
+
+
+    initPlaylist(afterCallback) {
+        let request = this.googleAuthService.gapi.client.youtube.playlists.insert({
+            part: 'snippet,status',
+            resource: {
+                snippet: {
+                    title: 'Watch history',
+                    description: 'Watch history playlist'
+                },
+                status: {
+                    privacyStatus: 'private'
+                }
+            }
+        });
+        let that = this;
+        request.execute(function (response) {
+            that.playlistId = response.id;
+            afterCallback(that.playlistId);
+        });
     }
 
 
