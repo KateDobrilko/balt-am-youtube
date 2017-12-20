@@ -20,7 +20,7 @@ class youtubeApiService {
 
     }
 
-    createWatchHistoryPlaylist(afterCallback) {
+    initPlaylist(afterCallback) {
         let request = this.googleAuthService.gapi.client.youtube.playlists.insert({
             part: 'snippet,status',
             resource: {
@@ -40,9 +40,10 @@ class youtubeApiService {
         });
     }
 
-    getWatchHistoryPlaylistId(afterCallback) {
+    getPlaylistId(afterCallback) {
         if (this.playlistId) {
             afterCallback(this.playlistId);
+            return
         }
 
         let request = this.googleAuthService.gapi.client.youtube.playlists.list({
@@ -60,9 +61,10 @@ class youtubeApiService {
             });
             if (that.playlistId) {
                 afterCallback(that.playlistId);
+                return
             }
             else {
-                that.createWatchHistoryPlaylist(afterCallback);
+                that.initPlaylist(afterCallback);
             }
         });
 
@@ -70,7 +72,7 @@ class youtubeApiService {
     }
 
     getWatchHistory(afterCallback) {
-        this.getWatchHistoryPlaylistId((playlistId) => {
+        this.getPlaylistId((playlistId) => {
             let request = this.googleAuthService.gapi.client.youtube.playlistItems.list({
                 'mine': 'true',
                 'maxResults': '25',
@@ -83,8 +85,8 @@ class youtubeApiService {
         });
     }
 
-    insertToWatchHistory(id) {
-        this.getWatchHistoryPlaylistId((playlistId) => {
+    saveVideoAsWatched(id) {
+        this.getPlaylistId((playlistId) => {
             let request = this.googleAuthService.gapi.client.youtube.playlistItems.insert({
                 part: 'snippet,status',
                 resource: {
