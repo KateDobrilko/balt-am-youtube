@@ -9,38 +9,33 @@ body {
   font-size: 38px;
 }
 
-.container {
-  display: block;
-  width: 100%;
-  p {
-    text-align: center;
-    font-family: 'Open Sans Condensed', sans-serif;
-  }
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: none;
 }
 
-.main {
-  background-color: #C3002F;
+.nav-bar {
+  display: flex;
+  .button {
+    background-color: rgba(#989898, 0.5);
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 20px;
 
-  .littleGuy {
-    background-color: #DD0031;
-    width: 300px;
-    height: 350px;
-    position: relative;
-    margin-left: 30px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: block;
-    text-overflow: ellipsis;
-    h1 {
-      font-size: 20px;
-      font-family: 'Open Sans Condensed', sans-serif;
+    span {
+      color: #272727;
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
     }
-
-    p {
-      font-size: 17px;
-      font-family: 'Open Sans Condensed', sans-serif;
+    &:hover {
+      background-color: #df4a32;
+      span {
+        font-weight: bold;
+        color: white;
+      }
     }
   }
 }

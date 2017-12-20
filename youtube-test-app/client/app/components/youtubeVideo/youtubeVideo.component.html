@@ -1,5 +1,5 @@
 <div class="video-container">
-    <a data-ng-class="{'clickable': $ctrl.video.id.videoId!==undefined}"data-ng-click="$ctrl.goToWatchVideo($ctrl.video)">
+    <a data-ng-class="{'clickable': $ctrl.videoId}"data-ng-click="$ctrl.goToWatchVideo($ctrl.video)">
         <img ng-src="{{$ctrl.video.snippet.thumbnails.medium.url}}" class="video-preview">
         <span class="video-title">{{$ctrl.video.snippet.title}}</span>
     </a>

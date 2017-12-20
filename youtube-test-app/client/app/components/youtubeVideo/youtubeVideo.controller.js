@@ -1,12 +1,21 @@
 class youtubeVideoController {
     constructor($state) {
         this.name = 'youtubeVideo';
+        this.videoId;
+        if ((this.video.id.kind == "youtube#video") || this.video.contentDetails) {
+            this.videoId = this.video.id.videoId ? this.video.id.videoId : this.video.contentDetails.videoId;
+        }
         this.goToWatchVideo = (video) => {
-            if (angular.isDefined(video.id.videoId)) {
-                $state.go('videoPlayer',{id: video.id.videoId});
+            if (angular.isDefined(this.videoId)) {
+                $state.go('videoPlayer', {id: this.videoId});
             }
         };
+
     }
 }
-youtubeVideoController.$inject = ['$state'];
-export default youtubeVideoController;
+
+youtubeVideoController
+    .$inject = ['$state'];
+export
+default
+youtubeVideoController;

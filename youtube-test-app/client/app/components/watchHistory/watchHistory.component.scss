@@ -1,0 +1,10 @@
+.watch-history-container {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 5vh 20vw 10vh 20vw;
+  .videos-container {
+    width: 100%;
+  }
+}

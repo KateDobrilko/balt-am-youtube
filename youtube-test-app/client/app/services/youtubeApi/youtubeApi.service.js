@@ -1,7 +1,9 @@
+import angular from 'angular';
 class youtubeApiService {
     constructor(googleAuthService) {
         'ngInject';
         this.googleAuthService = googleAuthService;
+        this.playlistId = null;
     }
 
     searchVideo(query, afterCallback) {
@@ -31,81 +33,70 @@ class youtubeApiService {
                 }
             }
         });
-
+        let that = this;
         request.execute(function (response) {
-            afterCallback(response.id);
+            that.playlistId = response.id;
+            afterCallback(that.playlistId);
         });
     }
 
-    getWatchHistoryPlaylistId() {
-        return $q(function (resolve, reject) {
-            if (watchHistoryPlaylistId) {
-                resolve(watchHistoryPlaylistId);
-                return;
-            }
+    getWatchHistoryPlaylistId(afterCallback) {
+        if (this.playlistId) {
+            afterCallback(this.playlistId);
+        }
 
-            apiRequest('GET',
-                '/youtube/v3/playlists',
-                {
-                    'mine': 'true',
-                    'maxResults': '25',
-                    'part': 'snippet,contentDetails',
-                    'onBehalfOfContentOwner': '',
-                    'onBehalfOfContentOwnerChannel': ''
-                }
-            ).then((response) => {
-                for (let item of response.items) {
-                    if (item.snippet.title === WATCH_HISTORY) {
-                        watchHistoryPlaylistId = item.id;
-                    }
-                }
-                if (watchHistoryPlaylistId) {
-                    resolve(watchHistoryPlaylistId);
+        let request = this.googleAuthService.gapi.client.youtube.playlists.list({
+            'mine': 'true',
+            'maxResults': '25',
+            'part': 'snippet,contentDetails',
+        });
 
-                    return;
+        let that = this;
+        request.execute(function (response) {
+            angular.forEach(response.items, (playlist) => {
+                if (playlist.snippet.title == 'Watch history') {
+                    that.playlistId = playlist.id;
                 }
-
-                return createWatchHistoryPlaylist();
-            }, () => {
             });
-
+            if (that.playlistId) {
+                afterCallback(that.playlistId);
+            }
+            else {
+                that.createWatchHistoryPlaylist(afterCallback);
+            }
         });
+
+
     }
 
-    getWatchHistory() {
-        return getWatchHistoryPlaylistId().then((WHId) => {
-            return apiRequest(
-                'GET',
-                '/youtube/v3/playlistItems',
-                {
-                    'maxResults': '25',
-                    'part': 'snippet,contentDetails',
-                    'playlistId': WHId
-                }
-            )
-        }, () => {
+    getWatchHistory(afterCallback) {
+        this.getWatchHistoryPlaylistId((playlistId) => {
+            let request = this.googleAuthService.gapi.client.youtube.playlistItems.list({
+                'mine': 'true',
+                'maxResults': '25',
+                'playlistId': playlistId,
+                'part': 'snippet,contentDetails'
+            });
+            request.execute((response) => {
+                afterCallback(response.items)
+            });
         });
     }
 
     insertToWatchHistory(id) {
-        return getUser().then((userData) => {
-            if (userData) {
-                return getWatchHistoryPlaylistId();
-            }
-        }).then((WHId) => {
-            return apiRequest('POST',
-                '/youtube/v3/playlistItems',
-                {
-                    'part': 'snippet',
-                    'onBehalfOfContentOwner': ''
-                },
-                {
-                    'snippet.playlistId': WHId,
-                    'snippet.resourceId.kind': 'youtube#video',
-                    'snippet.resourceId.videoId': id,
-                    'snippet.position': '0'
-                });
+        this.getWatchHistoryPlaylistId((playlistId) => {
+            let request = this.googleAuthService.gapi.client.youtube.playlistItems.insert({
+                part: 'snippet,status',
+                resource: {
+                    snippet: {
+                        playlistId: playlistId,
+                        resourceId: {videoId: id, kind: 'youtube#video'}
+                    }
+                }
+            });
+            request.execute();
         });
+
     }
 
 

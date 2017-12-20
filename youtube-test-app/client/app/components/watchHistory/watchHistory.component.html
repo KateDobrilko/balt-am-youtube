@@ -1,1 +1,8 @@
-<h1> watchHistory works! </h1>
+<div class="nav-bar">
+    <button class="button button--search-video" ui-sref="searchVideo"><span>Go to video search</span></button>
+</div>
+<div class="watch-history-container">
+    <div class="videos-container">
+        <youtube-video video="video" data-ng-repeat="video in $ctrl.videos"></youtube-video>
+    </div>
+</div>

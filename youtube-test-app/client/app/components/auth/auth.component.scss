@@ -4,11 +4,6 @@
   justify-content: center;
   margin-top: 40vh;
   .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    outline: none;
-    border: none;
     &.button--google-auth {
       background-color: #df4a32;
       border-radius: 3px;
